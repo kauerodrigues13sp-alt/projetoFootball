@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arena Football - Busca & Favoritos</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;700&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <span class="icon">⚽</span>
+      <h1>ARENA <span>FOOTBALL</span></h1>
+    </div>
+    <p class="subtitle">Escaneie o mercado da bola e monte a sua seleção da turma</p>
+  </header>
+
+  <main class="container">
+    <section class="search-section">
+      <div class="input-wrapper">
+        <input type="text" id="searchInput" placeholder="Digite um time em inglês (ex: Real Madrid, Flamengo, Barcelona)...">
+        <button id="searchBtn">
+          <span>BUSCAR</span> ⚽
+        </button>
+      </div>
+    </section>
+
+    <section id="resultCard" class="card hidden">
+      <div class="card-badge">Destaque</div>
+      <div class="img-wrapper">
+        <img id="itemImage" src="" alt="Escudo ou Foto">
+      </div>
+      <h2 id="itemName">Nome do Time</h2>
+      <p id="itemDetail">País / Liga</p>
+      <button id="favBtn" class="btn-fav">⭐ CONVOCAR / FAVORITAR</button>
+    </section>
+
+    <section class="favorites-section">
+      <div class="section-header">
+        <h2>🏆 GALERIA DE FAVORITOS DA TURMA</h2>
+      </div>
+      <div id="favoritesGrid" class="grid"></div>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

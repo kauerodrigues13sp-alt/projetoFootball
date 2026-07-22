@@ -1,0 +1,234 @@
+:root {
+  --primary-green: #00aa4f;
+  --dark-green: #0a2e18;
+  --pitch-green: #134e29;
+  --gold: #fbc02d;
+  --dark-bg: #0b130e;
+  --card-bg: rgba(19, 42, 28, 0.85);
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: var(--dark-bg);
+  background-image: 
+    linear-gradient(rgba(11, 19, 14, 0.85), rgba(11, 19, 14, 0.95)),
+    repeating-linear-gradient(
+      0deg,
+      #0a2e18,
+      #0a2e18 40px,
+      #0e3a1f 40px,
+      #0e3a1f 80px
+    );
+  color: var(--white);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.logo-container .icon {
+  font-size: 2.5rem;
+}
+
+h1 {
+  font-family: 'Teko', sans-serif;
+  font-size: 3.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+h1 span {
+  color: var(--primary-green);
+}
+
+.subtitle {
+  color: #a0c4ab;
+  font-size: 0.95rem;
+}
+
+.container {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+/* Área de Busca */
+.search-section {
+  margin-bottom: 30px;
+}
+
+.input-wrapper {
+  display: flex;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px;
+  border-radius: 50px;
+  border: 2px solid var(--primary-green);
+  box-shadow: 0 0 15px rgba(0, 170, 79, 0.3);
+}
+
+input[type="text"] {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  color: var(--white);
+  outline: none;
+}
+
+input[type="text"]::placeholder {
+  color: #7a9a83;
+}
+
+button {
+  background: linear-gradient(135deg, #00ca5d, #008a3e);
+  color: var(--white);
+  border: none;
+  padding: 12px 25px;
+  font-weight: 800;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 202, 93, 0.4);
+}
+
+/* Card Principal */
+.card {
+  position: relative;
+  background: var(--card-bg);
+  border: 2px solid var(--gold);
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  max-width: 380px;
+  margin: 0 auto 40px auto;
+}
+
+.card-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--gold);
+  color: #000;
+  font-family: 'Teko', sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 2px 10px;
+  border-radius: 4px;
+}
+
+.img-wrapper {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 15px auto;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+}
+
+.img-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.card h2 {
+  font-family: 'Teko', sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+}
+
+.card p {
+  color: #a0c4ab;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.btn-fav {
+  width: 100%;
+  background: linear-gradient(135deg, #fbc02d, #f57f17);
+  color: #000;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Galeria de Favoritos */
+.favorites-section {
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+  padding-top: 30px;
+}
+
+.section-header h2 {
+  font-family: 'Teko', sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.fav-card {
+  background: rgba(19, 42, 28, 0.6);
+  border: 1px solid rgba(0, 170, 79, 0.4);
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.fav-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+}
+
+.fav-card img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.fav-card h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--white);
+}   
