@@ -3,46 +3,127 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arena Football - Busca & Favoritos</title>
+  <title>Arena Football 3D - FIFA FUT Edition</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;700&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@600;700&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
-  <header>
-    <div class="logo-container">
-      <span class="icon">⚽</span>
-      <h1>ARENA <span>FOOTBALL</span></h1>
+  <div class="particles-container">
+    <span class="floating-item p1">⚽</span>
+    <span class="floating-item p2">🏆</span>
+    <span class="floating-item p3">⚡</span>
+    <span class="floating-item p4">🥇</span>
+  </div>
+
+  <div id="toastContainer" class="toast-container"></div>
+
+  <header class="hero-banner">
+    <div class="banner-content">
+      <div class="badge-live">LIVE match database • Ultimate Edition</div>
+      <h1 class="glitch-title">ARENA <span>FOOTBALL 3D</span></h1>
+      <p class="subtitle">Escaneie o mercado, monte a formação e gere os cards FUT do seu time</p>
     </div>
-    <p class="subtitle">Escaneie o mercado da bola e monte a sua seleção da turma</p>
   </header>
 
   <main class="container">
+    
+    <section class="user-section glass-panel">
+      <label for="userNameInput">🎮 Treinador / Apelido:</label>
+      <input type="text" id="userNameInput" placeholder="Ex: Guardiola, Tite, Lucas..." maxlength="20">
+    </section>
+
     <section class="search-section">
       <div class="input-wrapper">
-        <input type="text" id="searchInput" placeholder="Digite um time em inglês (ex: Real Madrid, Flamengo, Barcelona)...">
-        <button id="searchBtn">
+        <input type="text" id="searchInput" placeholder="Busque um clube ou craque (ex: Real Madrid, Messi, Neymar)...">
+        <button id="searchBtn" class="btn-3d">
           <span>BUSCAR</span> ⚽
         </button>
       </div>
     </section>
 
-    <section id="resultCard" class="card hidden">
-      <div class="card-badge">Destaque</div>
-      <div class="img-wrapper">
-        <img id="itemImage" src="" alt="Escudo ou Foto">
+    <section id="resultCard" class="card-3d-wrapper hidden">
+      <div class="fut-card-3d" id="tiltCard">
+        <div class="fut-card-header">
+          <div class="fut-rating" id="futOverall">99</div>
+          <div class="fut-position" id="futPosition">ST</div>
+        </div>
+
+        <div class="fut-img-container">
+          <img id="itemImage" src="" alt="Escudo ou Foto">
+        </div>
+
+        <div class="fut-card-info">
+          <h2 id="itemName">NOME DO JOGADOR</h2>
+          <p id="itemDetail" class="fut-subtext">Clube / País</p>
+          
+          <div class="fut-stats-grid" id="futStatsGrid">
+            <div class="stat-item"><span>PAC</span><b id="statPac">92</b></div>
+            <div class="stat-item"><span>SHO</span><b id="statSho">95</b></div>
+            <div class="stat-item"><span>PAS</span><b id="statPas">88</b></div>
+            <div class="stat-item"><span>DRI</span><b id="statDri">94</b></div>
+            <div class="stat-item"><span>DEF</span><b id="statDef">45</b></div>
+            <div class="stat-item"><span>PHY</span><b id="statPhy">82</b></div>
+          </div>
+        </div>
+
+        <button id="favBtn" class="btn-3d btn-gold fut-btn-add">⭐ CONVOCAR PARA A SELEÇÃO</button>
       </div>
-      <h2 id="itemName">Nome do Time</h2>
-      <p id="itemDetail">País / Liga</p>
-      <button id="favBtn" class="btn-fav">⭐ CONVOCAR / FAVORITAR</button>
+    </section>
+
+    <section class="stats-panel glass-panel">
+      <div class="stat-box">
+        <span class="stat-number" id="totalConvocados">0</span>
+        <span class="stat-label">Convocados</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-box">
+        <span class="stat-number" id="totalClubes">0</span>
+        <span class="stat-label">Clubes</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-box">
+        <span class="stat-number" id="totalCraques">0</span>
+        <span class="stat-label">Craques</span>
+      </div>
+    </section>
+
+    <section class="tactical-section">
+      <h2 class="title-3d">📋 ESCALAÇÃO EM CAMPO (ARRASTE PARA POSICIONAR)</h2>
+      <div class="pitch-container">
+        <div class="pitch-3d" id="pitchField">
+          <div class="pitch-lines">
+            <div class="center-circle"></div>
+            <div class="penalty-area top"></div>
+            <div class="penalty-area bottom"></div>
+          </div>
+          <div id="pitchPlayers" class="pitch-players-layer"></div>
+        </div>
+      </div>
     </section>
 
     <section class="favorites-section">
       <div class="section-header">
-        <h2>🏆 GALERIA DE FAVORITOS DA TURMA</h2>
+        <h2 class="title-3d">🏆 GALERIA DE CONVOCADOS DA TURMA</h2>
+        
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="team">Clubes</button>
+          <button class="filter-btn" data-filter="player">Craques</button>
+        </div>
       </div>
-      <div id="favoritesGrid" class="grid"></div>
+
+      <div id="favoritesGrid" class="grid-3d"></div>
     </section>
+
+    <section class="quiz-section glass-panel">
+      <h3>🧩 QUIZ RÁPIDO DA ARENA</h3>
+      <p id="quizQuestion">Aguardando pergunta...</p>
+      <div id="quizOptions" class="quiz-options"></div>
+      <p id="quizFeedback" class="quiz-feedback"></p>
+    </section>
+
   </main>
 
   <script type="module" src="app.js"></script>
